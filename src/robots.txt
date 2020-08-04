@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+Allow: /chat/
+Sitemap: https://ts.city/sitemap.xml

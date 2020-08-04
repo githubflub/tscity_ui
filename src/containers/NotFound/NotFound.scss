@@ -1,0 +1,12 @@
+@import 'stylesheets/variables.scss';
+
+.NotFound {
+   // color: rgba(255, 255,255, 0.88);
+   color: $teal_light;
+   font-size: 24px;
+   white-space: pre-wrap;
+
+   span.line {
+      display: inline-block;
+   }
+}

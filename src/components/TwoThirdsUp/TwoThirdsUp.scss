@@ -1,0 +1,17 @@
+.TwoThirdsUp {
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+   flex: 1;
+
+   .TwoThirdsUp_1 {
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+   }
+
+   .TwoThirdsUp_2 {
+      flex: 2;
+   }
+}

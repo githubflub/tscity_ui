@@ -1,0 +1,10 @@
+@import 'stylesheets/variables.scss';
+
+.teenspot_help_text {
+   font-size: 12px;
+   margin-top: 2px;
+}
+
+.teenspot_help_text__error {
+   color: $red_main;
+}

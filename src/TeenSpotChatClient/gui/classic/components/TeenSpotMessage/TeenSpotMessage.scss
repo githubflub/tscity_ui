@@ -1,0 +1,22 @@
+.tsscChatTextItem {
+   font-family: Arial;
+   font-size: 12px;
+   margin: 2px 0px;
+}
+
+$wrap_indent: 12px;
+
+.tssc_chat_message {
+   margin: 2px 0px;
+   display: block;
+   align-items: center;
+   font-family: Arial;
+   font-size: 12px;
+   line-height: 16px;
+   padding-left: $wrap_indent;
+   text-indent: -#{$wrap_indent};
+}
+
+.tssc_chat_message__content {
+
+}

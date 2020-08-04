@@ -1,0 +1,107 @@
+@import 'stylesheets/variables.scss';
+
+$messenger_dark_font_color: pink;
+
+.Messenger {
+   .Messenger__border_bottom {
+      border-bottom: 1px solid $teal_main;
+   }
+
+   .Messenger__HubItem {
+      padding: 7px 5px;
+
+      &.Messenger__HubItem__clickable {
+         cursor: pointer;
+
+         &:hover {
+            background-color: rgba(0,0,0,0.05);
+         }
+      }
+   }
+
+
+   .Messenger_SearchBox {
+
+   }
+
+   .MessengerTab {
+      border-radius: 4px 4px 0px 0px;
+      display: flex;
+      align-items: center;
+   }
+
+   .Messenger_MessageItem {
+      padding: 3px 0px;
+      font-size: 12px;
+   }
+
+   .Messenger_MessageItem_Username {
+      font-weight: 700;
+   }
+
+}
+
+.Messenger.Messenger__dark {
+   .Messenger_MessageItem_Username {
+      color: rgba($messenger_dark_font_color,0.88);
+   }
+
+   .Messenger_MessageItem_Content {
+      color: rgba($messenger_dark_font_color,0.88);
+   }
+
+   .MessengerTab {
+      color: rgba($messenger_dark_font_color,0.88);
+   }
+
+   .Messenger__HubItem {
+      color: rgba($messenger_dark_font_color,0.88);
+
+      &.Messenger__HubItem__clickable {
+         &:hover {
+            background-color: rgba($messenger_dark_font_color,0.05);
+         }
+      }
+   }
+
+   .Messenger_SearchBox {
+      .MuiInputBase-root {
+         .MuiInputBase-input {
+            border: 1px solid rgba($teal_main, 0.75);
+            background-color: #1f1f1f;
+            caret-color: rgba($messenger_dark_font_color,0.88);
+            color: rgba($messenger_dark_font_color,0.88);
+
+            &::placeholder {
+               color: rgba($messenger_dark_font_color,0.88);
+            }
+         }
+      }
+   }
+}
+
+.Messenger.Messenger__mobile {
+   .Messenger_MessageItem {
+      font-size: 14px;
+   }
+
+   .MessengerTab {
+      color: rgba(white,0.88);
+      padding: 9px 0px;
+
+      .MuiButtonBase-root {
+         margin-left: 5px;
+         padding-left: 9px;
+         padding-right: 9px;
+         margin-right: 3px;
+      }
+   }
+
+   .Messenger__HubItem {
+      padding: 16px 5px;
+   }
+
+   .Messenger_SearchBox {
+      padding: 12px 5px;
+   }
+}

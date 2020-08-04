@@ -1,0 +1,48 @@
+@import 'stylesheets/variables.scss';
+$top_padding: 45px;
+$bottom_padding: 15px;
+$layout_padding: #{$top_padding} #{$side_padding} #{$bottom_padding};
+
+.teenspot_app_layout {
+   flex: 1;
+   display: flex;
+   flex-direction: column;
+
+   .teenspot_app_layout__body {
+      flex: 1;
+      display: flex;
+      overflow: auto;
+   }
+
+   .teenspot_app_layout__page {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+   }
+
+   .ts_app_layout__section {
+      max-width: $app_width;
+      width: 100%;
+      padding: 0px #{$side_padding};
+      display: flex;
+      flex-direction: column;
+   }
+
+
+   .teenspot_app_layout__page_container {
+      max-width: $app_width;
+      width: 100%;
+      padding: $layout_padding;
+      display: flex;
+      flex-direction: column;
+   }
+
+   .teenspot_app_layout__page_container_free {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: $top_padding;
+      padding-bottom: $bottom_padding;
+   }
+}

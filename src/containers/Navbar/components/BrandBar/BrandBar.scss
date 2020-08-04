@@ -1,0 +1,34 @@
+@import 'stylesheets/variables.scss';
+
+.teenspot_brand_bar {
+   display: flex; 
+   flex-direction: column; 
+   align-items: flex-end; 
+   justify-content: space-between; 
+   height: 100%;
+   padding: 4px 0px 7px; 
+}
+
+.teenspot_brand_bar__top_half {
+   padding: 0px 10px; 
+   margin-bottom: 5px; 
+}
+
+.teenspot_brand_bar__top_half_item {
+   display: inline-block; 
+   margin: 0px #{$main_row_spacing}; 
+
+   &:last-child {
+      margin-right: 0px; 
+   }
+}
+
+.teenspot_notification_bar {
+   background-color: white; 
+   padding: 2px 10px; 
+   border-radius: 12px; 
+
+   a.teenspot_notification_bar__new_notification {
+      color: red; 
+   }
+}

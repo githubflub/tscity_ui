@@ -1,0 +1,51 @@
+
+@import './scss_variables.json';
+
+$app_width: 1024px;
+$main_row_spacing: 7px;
+$side_padding: calc(#{$main_row_spacing} * 2);
+$TABLET_SIZE: #{$TABLET_SIZE}px;
+$MOBILE_SIZE: #{$MOBILE_SIZE}px;
+
+$teal_main: #41A1A1;
+$teal_light: #c0e8e8;
+$teal_very_light: #E5F6F6;
+$teal_hover: #56B9B9;
+
+$red_main: rgb(232, 62, 62);
+$red_light: rgb(255, 221, 221);
+$red_very_light: rgb(255, 243, 243);
+
+$blue_main: #2482DB;
+$blue_light: #DCEEFF;
+$blue_very_light: #F1F8FF;
+
+$orange_main: #EFA234;
+$orange_light: #FFE9CA;
+$orange_very_light: #FFFAF2;
+
+$green_main: #5CC822;
+$green_light: #E0FAD1;
+$green_very_light: #F8FFF4;
+
+:export {
+   teal_main: $teal_main;
+   teal_light: $teal_light;
+   teal_very_light: $teal_very_light;
+
+   red_main: $red_main;
+   red_light: $red_light;
+   red_very_light: $red_very_light;
+
+   blue_main: $blue_main;
+   blue_light: $blue_light;
+   blue_very_light: $blue_very_light;
+
+   orange_main: $orange_main;
+   orange_light: $orange_light;
+   orange_very_light: $orange_very_light;
+
+   green_main: $green_main;
+   green_light: $green_light;
+   green_very_light: $green_very_light;
+}

@@ -1,0 +1,13 @@
+
+@import 'stylesheets/variables.scss';
+@import 'layouts/AppLayout/AppLayout.scss';
+
+.chat_page.teenspot_app_layout__page {
+   .teenspot_app_layout__page_container {
+      padding: 0px;
+
+      @media all and (min-width: $TABLET_SIZE) {
+         padding: $layout_padding;
+      }
+   }
+}

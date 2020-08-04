@@ -1,0 +1,15 @@
+.mobile_brand_bar {
+   display: flex;
+   justify-content: flex-end;
+
+   & > div:not(:last-child) {
+      margin-right: 16px;
+   }
+}
+
+.mobile_brand_bar__button_container {
+   height: 40px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}

@@ -1,0 +1,32 @@
+.tscc_room_tabs {
+   display: flex;
+   align-items: flex-end;
+   height: 20px;
+   width: 582px;
+}
+
+.tscc_room_tab {
+   background: rgb(192,192,192);
+   border: 2px outset;
+   border-radius: 4px 4px 0px 0px;
+   height: 16px;
+   border-bottom: 0px;
+   min-width: 55px;
+   display: flex;
+   align-items: center;
+   padding: 0px 4px;
+   font-family: Arial;
+   font-size: 11px;
+   margin-right: 1px;
+   cursor: pointer;
+}
+
+.tscc_room_tab__active {
+   height: 18px;
+   margin-left: -3px;
+   // min-width: 58px;
+
+   &:first-child {
+      margin-left: 0px;
+   }
+}

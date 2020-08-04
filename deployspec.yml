@@ -1,0 +1,65 @@
+version: 0.2
+
+#env:
+  #variables:
+     # key: "value"
+     # key: "value"
+  #parameter-store:
+     # key: "value"
+     # key: "value"
+  #git-credential-helper: yes
+
+phases:
+  install:
+    #If you use the Ubuntu standard image 2.0 or later, you must specify runtime-versions.
+    #If you specify runtime-versions and use an image other than Ubuntu standard image 2.0, the build fails.
+    runtime-versions:
+      nodejs: 10
+  pre_build:
+    commands:
+      - echo read config
+      - mkdir env
+      - aws s3 cp s3://ts-configs env --recursive
+      - . ./env/env.sh
+      - . ./env/secrets.sh
+  build:
+    commands:
+      - echo deploying to s3!!
+      - >
+        aws s3 sync $CODEBUILD_SRC_DIR_BuildArtifact s3://ts.city
+        --metadata-directive REPLACE --cache-control max-age=31536000,public
+        --grants
+        read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+        full=id=${TS_DEVOPS_AWS_ACCOUNT_CANONICAL_ID},id=${TS_STACK_AWS_ACCOUNT_CANONICAL_ID}
+        --delete
+      - >
+        aws s3 cp s3://ts.city s3://ts.city
+        --recursive
+        --exclude "*"
+        --include "index.html"
+        --metadata-directive REPLACE --cache-control max-age=10
+        --grants
+        read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+        full=id=${TS_DEVOPS_AWS_ACCOUNT_CANONICAL_ID},id=${TS_STACK_AWS_ACCOUNT_CANONICAL_ID}
+      - >
+        aws s3 cp s3://ts.city s3://ts.city
+        --recursive
+        --exclude "*"
+        --include "robots.txt"
+        --metadata-directive REPLACE --cache-control max-age=10
+        --grants
+        read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+        full=id=${TS_DEVOPS_AWS_ACCOUNT_CANONICAL_ID},id=${TS_STACK_AWS_ACCOUNT_CANONICAL_ID}
+      - >
+        aws s3 cp s3://ts.city s3://ts.city
+        --recursive
+        --exclude "*"
+        --include "sitemap.xml"
+        --metadata-directive REPLACE --cache-control max-age=10
+        --grants
+        read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+        full=id=${TS_DEVOPS_AWS_ACCOUNT_CANONICAL_ID},id=${TS_STACK_AWS_ACCOUNT_CANONICAL_ID}
+
+  post_build:
+    commands:
+      - echo successully deployed to s3!

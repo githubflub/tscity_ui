@@ -1,0 +1,20 @@
+@import 'stylesheets/variables.scss';
+
+.profiles_search__search_box {
+   align-items: center;
+   margin-bottom: 15px;
+}
+
+.profiles_search__input {
+   display: block;
+   max-width: 450px;
+   margin-bottom: 10px;
+}
+
+h2 {
+   color: $teal_main;
+}
+
+.profiles_search__button {
+   display: block;
+}

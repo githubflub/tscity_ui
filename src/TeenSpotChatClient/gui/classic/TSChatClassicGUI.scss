@@ -1,0 +1,295 @@
+@import 'stylesheets/variables.scss';
+
+.tsccCanvasOuter {
+   background: #2f625f;
+   height: 445px;
+   width: 759px;
+   border-radius: 5px;
+   box-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.tsccCanvasInner {
+   background: #2f625f;
+   height: 443px;
+   width: 757px;
+   border: 1px solid #41A1A1;
+   border-radius: 5px;
+   padding: 10px;
+   /*box-shadow: 2px 2px 4px rgba(0,0,0,0.15);*/
+}
+
+.tsscChatTextBoxContainer {
+   padding: 2px 0px;
+}
+
+.tsscChatTextBox {
+   background: #ecfffd;
+   height: 293px;
+   width: 582px;
+   width: 100%;
+   border-radius: 0px 0px 0px 5px;
+   padding-left: 4px;
+   overflow: auto;
+}
+
+.roomAndMembersListRow {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+
+   & > div {
+      padding: 2px 3px;
+
+      &:first-child {
+         padding-left: 2px;
+      }
+
+      &:last-child {
+         padding-right: 2px;
+      }
+   }
+}
+
+.roomColumn {
+   flex: 600;
+}
+
+.tabsContainer {
+   height: 30px;
+   width: 582px;
+}
+
+.roomSubtitleContainer {
+   padding: 2px 0px;
+}
+
+.roomSubtitleBox {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background: #ecfffd;
+   border-radius: 5px 5px 0px 0px;
+   height: 25px;
+   width: 582px;
+   width: 100%;
+
+   .roomSubtitleBox__description {
+      padding-left: 5px;
+      align-items: center;
+      text-align: center;
+   }
+
+   .roomSubtitleBox__close {
+      padding-right: 5px;
+   }
+}
+
+.membersListColumn {
+   flex: 146;
+}
+
+.membersListTextBoxContainer {
+   padding: 2px 0px 0px 0px;
+}
+
+.membersListTextBox {
+   background: #dcf6f3;
+   width: 142px;
+   height: 293px;
+   border-radius: 0px 0px 0px 5px;
+   padding-top: 2px;
+   padding-left: 4px;
+   display: flex;
+   flex-direction: column;
+   overflow: auto;
+
+}
+
+.tsccMembersListItem {
+   font-family: Arial;
+   font-size: 12px;
+   cursor: pointer;
+}
+
+.membersListTitleContainer {
+   padding: 0px 0px 2px 0px;
+}
+
+.membersListTitle {
+   background: #dcf6f3;
+   width: 142px;
+   height: 25px;
+   border-radius: 5px 5px 0px 0px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.tsccChatInputArea {
+   margin: 4px 0px;
+   background: linear-gradient(rgb(245,245,245), rgb(113,113,113));
+   height: 35px;
+   width: 100%;
+   border-radius: 16px;
+   box-shadow: 0px 1px black;
+   display: flex;
+   align-items: center;
+   flex-direction: row;
+
+}
+
+.tsccChatInputAreaContainer {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 735px;
+}
+
+.tscc_chat_input_area_help {
+   padding-left: 2px;
+   width: 100%;
+}
+
+.tsccRoomTabsRow {
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   padding: 0px 2px;
+}
+
+.tsccChatInputFieldContainer {
+   display: flex;
+   align-items: center;
+}
+
+.tsccMainChatInput {
+   background: #ecfffd;
+   width: 635px;
+   height: 29px;
+   font-family: "courier new";
+   font-size: 12px;
+   padding: 0px 3px;
+   color: rgb(0,147,147);
+}
+
+$chat_form_input_width: 624px;
+
+.tscc_chat_login_input_wrapper {
+   display: flex;
+   width: $chat_form_input_width;
+}
+
+.tsccMainInputWrapper {
+   height: 29px;
+   overflow: hidden;
+   border: 1px inset;
+   display: flex;
+   align-items: flex-start;
+   background: #ecfffd;
+   width: $chat_form_input_width;
+}
+
+.tscc_chat_input__error {
+   outline: 1px solid $red_main;
+   border: 1px solid $red_main;
+
+   input {
+      color: $red_main;
+      background-color: $red_very_light;
+
+      &::placeholder {
+         color: $red_main;
+      }
+   }
+}
+
+.tsccMainInputElement {
+   -webkit-appearance: none;
+   border: 1px inset;
+   outline: none;
+   background: #ecfffd;
+   width: 100%;
+   height: 100%;
+   font-family: "courier new";
+   font-size: 12px;
+   padding: 0px 6px;
+   color: rgb(0,147,147);
+   overflow: auto;
+   white-space: nowrap;
+}
+
+.tsccMainInputElement::-webkit-scrollbar {
+   display: none;
+}
+
+
+.tsccMainInputForm {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   width: 100%;
+   margin-left: 12px;
+   margin-right: 12px;
+}
+
+.tsccMainInputFormButton {
+   background: linear-gradient(rgb(245,245,245), rgb(113,113,113));
+   border-radius: 15px;
+   /*border: 1px solid #6e6e6e;*/
+   border-style: groove;
+   width: 72px;
+   color: #6e6e6e;
+   font-size: 12px;
+   font-weight: 900;
+   font-family: "Arial";
+   text-shadow: 1px 1px white;
+}
+
+.tsccMainInputFormButton:active:hover {
+   border: inset;
+}
+
+.tsccGrayButtonsRow {
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   margin-left: 51px;
+}
+
+.tsccGrayButton {
+   background: rgb(192,192,192);
+   width: 25px;
+   height: 25px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 0px;
+   margin-right: 2px;
+   position: relative;
+}
+
+.tsccContextMenu {
+   display: none;
+   flex-direction: column;
+   position: absolute;
+   top: 460px;
+   background: rgb(192,192,192);
+   background: rgb(241,241,241);
+   border: 1px solid rgb(151,151,151);
+   width: 100px;
+   font-family: Arial;
+   font-size: 12px;
+   padding: 2px;
+   transform: translate(0, -100%);
+   z-Index: 1;
+}
+
+.tsccContextMenuItem:hover {
+    background: gray;
+    color: white;
+}

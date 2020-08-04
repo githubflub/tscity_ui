@@ -1,0 +1,27 @@
+@import 'stylesheets/variables.scss';
+
+.DesktopMessenger {
+   position: fixed;
+   bottom: 0px;
+
+   // Allows clicks to pass
+   // right through this div
+   // and all child divs.
+   //
+   // Child divs that I still
+   // want to click will
+   // reset pointer-events to auto.
+   pointer-events: none;
+}
+
+.DesktopMessenger_inner {
+   height: 100%;
+   width: 100%;
+   display: flex;
+   align-items: flex-end;
+   padding: 0px #{$side_padding};
+
+   & > div:not(:last-child) {
+      margin: 0px 5px 0px 0px;
+   }
+}

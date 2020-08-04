@@ -1,0 +1,65 @@
+.ts_twitch_chat {
+   background-color: #222;
+   flex: 1;
+   display: flex;
+   flex-direction: column;
+   color: pink;
+}
+
+.ts_twitch_chat__header_body {
+   flex: 1;
+   display: flex;
+   flex-direction: column;
+   position: relative;
+   overflow: hidden;
+}
+
+.ts_twitch_chat__header {
+   text-align: center;
+   padding: 7px 8px 1px;
+}
+
+.ts_twitch_chat__body {
+   flex: 1;
+   position: relative;
+   overflow: hidden;
+}
+
+.ts_twitch_chat__footer {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.ts_twitch_chat__footer_controls {
+   width: 100%;
+   padding: 0px 6px;
+   display: flex;
+   justify-content: flex-end;
+}
+
+button.ts_twitch_chat__footer_control_button {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+   padding: 2px 12px;
+
+   &:hover {
+      color: whitesmoke;
+   }
+
+   .MuiSvgIcon-root {
+      display: block;
+   }
+}
+
+.ts_twitch_chat__input_form {
+   padding: 6px;
+   padding-bottom: 3px;
+   width: 100%;
+}
+
+.ts_twitch_chat__input {
+}

@@ -1,0 +1,25 @@
+@import 'stylesheets/variables.scss';
+
+.home {
+   .home_row_main {
+      display: grid;
+      grid-gap: calc(2 * #{$main_row_spacing});
+      grid-template-areas:
+         "login"
+         "main";
+
+      @media all and (min-width: $TABLET_SIZE) {
+         grid-template-columns: 8fr 4fr;
+         grid-template-areas:
+            "main login";
+      }
+
+      .home_row_main__left {
+         grid-area: main;
+      }
+
+      .home_row_main__right {
+         grid-area: login;
+      }
+   }
+}

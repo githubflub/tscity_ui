@@ -1,0 +1,77 @@
+@import 'stylesheets/variables.scss';
+
+.teenspot_navbar {
+   .teenspot_navbar_container {
+      max-width: $app_width;
+      width: 100%;
+      padding: 0px;
+
+      @media all and (min-width: 768px) {
+         padding: 0px #{$side_padding};
+      }
+   }
+
+   .teenspot_navbar_group {
+      height: 100%;
+      display: flex;
+      align-items: center;
+   }
+
+   .teenspot_navbar_logo a {
+      display: flex;
+      align-items: center;
+   }
+
+   .teenspot_navbar_top_half {
+      background-color: $teal-light;
+      min-height: 60px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+
+      .teenspot_navbar_container {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         padding: 0px #{$side_padding};
+      }
+   }
+
+   .teenspot_navbar_nav_links {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      min-height: 28px;
+      background-color: $teal_main;
+
+      .teenspot_navbar_container {
+         display: flex;
+      }
+   }
+
+   .teenspot_navbar_nav_link {
+      width: auto;
+      flex: 1;
+
+      @media all and (min-width: 768px) {
+         width: 80px;
+         flex: none;
+      }
+
+      a {
+         color: white;
+         padding: 4px;
+         text-decoration: none;
+         width: 100%;
+         height: 100%;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         flex: 1;
+
+         &:hover {
+            background-color: $teal-hover;
+         }
+      }
+   }
+}

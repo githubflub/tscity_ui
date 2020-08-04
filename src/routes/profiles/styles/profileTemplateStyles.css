@@ -1,0 +1,68 @@
+.blueCard#MainProfileCard {
+    flex: 8; /* about 680px */ 
+    margin-right: 5px; 
+    margin-bottom: 10px;
+    min-width: 0; /* necessary to wrap long contiguous text */ 
+    display: flex; 
+    flex-direction: column; /* aligns card header and body */ 
+    justify-content: flex-start;     
+}
+
+.greenCard#FriendsCard {
+    display: flex;
+    flex-direction: column;  
+    flex-grow: 3; 
+    justify-content: flex-start;     
+    margin-left: 5px; 
+    margin-bottom: 10px; 
+}
+
+.redCard#AboutMeCard {
+    flex: 8;      
+    min-width: 0px; 
+    margin-right: 5px; 
+    display: flex;
+    flex-direction: column;    
+    justify-content: flex-start;    
+}
+
+.orangeCard#BlogCard {
+    margin-left: 5px;
+    flex-grow: 13;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;      
+}
+
+/* Profile Template */ 
+.blueCardBody#MainProfilePanel {
+    min-width: 0; 
+    display: flex; 
+    flex-direction: row;     
+    justify-content: center; 
+}
+
+.blueCardBodySection#MainImageCol {
+    flex: 16 16;
+    min-width: 0; 
+    display: flex;     
+    padding: 10px; 
+}
+
+.tsCol#QuoteStatsCol {
+    flex: 9 9;
+    min-width: 0; 
+    display: flex;         
+}
+
+.blueCardBodySection#QuoteCol {
+    display: flex;    
+    padding: 10px;    
+    min-width: 0; 
+    
+}
+
+.blueCardBodySection#StatsCol {
+    display: flex;     
+    padding: 10px; 
+}

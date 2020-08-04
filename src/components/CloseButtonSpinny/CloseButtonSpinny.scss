@@ -1,0 +1,37 @@
+/* Modal X button */
+.CloseButtonSpinny {
+   float: right;
+   position: relative;
+   width: 32px;
+   height: 32px;
+   cursor: pointer;
+   text-align: center;
+   text-shadow: 0px 0px 3px #6d6d6d;
+   transition: all ease 200ms;
+}
+
+.CloseButtonSpinny:hover {
+   transform: rotate(90deg);
+}
+
+.CloseButtonSpinny::before {
+   content: "";
+   height: 4px;
+   width: 32px;
+   background: slategray;
+   position: absolute;
+   top: 50%;
+   left: 0;
+   transform: rotate(-45deg);
+}
+
+.CloseButtonSpinny::after {
+   content: "";
+   height: 4px;
+   width: 32px;
+   background: slategray;
+   top: 50%;
+   left: 0;
+   position: absolute;
+   transform: rotate(45deg);
+}

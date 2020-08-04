@@ -1,0 +1,9 @@
+$dark_mode_font_color: white;
+
+.MuiPaper-root.NavbarDialog {
+
+}
+
+.MuiPaper-root.NavbarDialog.NavbarDialog__dark {
+   color: rgba($dark_mode_font_color, 0.88);
+}

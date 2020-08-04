@@ -1,0 +1,31 @@
+@import 'stylesheets/variables.scss';
+
+.ts_profile_grid {
+   @supports (grid-area: auto) {
+      display: grid;
+      grid-gap: calc(2 * #{$main_row_spacing});
+      grid-template-areas:
+            "header"
+            "bio"
+            "posts";
+
+      @media all and (min-width: $TABLET_SIZE) {
+         grid-template-columns: 7fr 14fr;
+         grid-template-areas:
+            "header header"
+            "bio posts";
+      }
+   }
+}
+
+.ts_profile__header {
+   grid-area: header;
+}
+
+.ts_profile__bio {
+   grid-area: bio;
+}
+
+.ts_profile__posts {
+   grid-area: posts;
+}

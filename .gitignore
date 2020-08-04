@@ -1,0 +1,7 @@
+node_modules
+npm-debug.log
+database-schema.xlsx
+*.test_cases.ts
+/dist
+/public
+/notes

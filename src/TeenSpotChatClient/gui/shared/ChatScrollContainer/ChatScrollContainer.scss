@@ -1,0 +1,41 @@
+$SCROLLBAR_WIDTH: 17px;
+
+.chat_scroll_container {
+   width: 100%;
+   height: 100%;
+   overflow: hidden;
+}
+
+.chat_scroll_container__scrollbar {
+   overflow: auto;
+   width: 100%;
+   height: 100%;
+   position: relative;
+}
+
+.chat_scroll_container__content {
+   position: absolute;
+   top: 0;
+   // bottom: 0;
+   left: 0;
+   right: 0;
+}
+
+.chat_scroll_container__overlay {
+   .chat_scroll_container__scrollbar {
+      overflow-x: hidden;
+   }
+
+   .chat_scroll_container__content {
+      right: -#{$SCROLLBAR_WIDTH};
+   }
+}
+
+.chat_scroll_container__hidden {
+   .chat_scroll_container__scrollbar {
+      overflow: scroll;
+      width: calc(100% + #{$SCROLLBAR_WIDTH});
+      height: calc(100% + #{$SCROLLBAR_WIDTH});
+   }
+}
+

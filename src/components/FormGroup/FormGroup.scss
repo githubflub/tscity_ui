@@ -1,0 +1,16 @@
+@import 'stylesheets/variables.scss';
+
+.teenspot_form_group {
+   margin-bottom: 15px; 
+
+   label {
+      margin-bottom: 5px; 
+      font-weight: 700; 
+      display: inline-block; 
+      max-width: 100%;
+   }
+}
+
+.teenspot_form_group__error {
+   color: $red_main; 
+}

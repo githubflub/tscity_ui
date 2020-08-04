@@ -1,0 +1,35 @@
+version: 0.2
+
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+    commands:
+      - echo $CODEBUILD_SRC_DIR
+      - chmod 600 $CODEBUILD_SRC_DIR/.npmrc
+      - echo building npm
+      - npm install -g npm@latest
+      - npm --version
+      - npm install
+  pre_build:
+    commands:
+      - echo read config
+      - mkdir env
+      - aws s3 cp s3://ts-configs env --recursive
+      - . ./env/env.sh
+      - . ./env/secrets.sh
+  build:
+    commands:
+      - echo Build started on `date`
+      - npm run build-fragment
+      - npm run build
+  post_build:
+    commands:
+      - echo Build completed on `date`
+
+
+artifacts:
+  base-directory: dist
+  files:
+    - '**/*'

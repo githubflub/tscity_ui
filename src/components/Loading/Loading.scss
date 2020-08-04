@@ -1,0 +1,27 @@
+.teenspot_loading_spinner {
+   height: 100%; 
+   width: 100%; 
+   display: flex; 
+   flex-direction: column; 
+   justify-content: center;
+   align-items: center; 
+
+   .teenspot_loading_spinner_top {
+      flex: 2; 
+      display: flex; 
+      justify-content: center;
+      align-items: center; 
+   }
+
+   .teenspot_loading_spinner_bottom {
+      flex: 1; 
+   }
+}
+
+.teenspot_loading_spinner__absolute {
+   position: absolute;
+   top: 0px; 
+   bottom: 0px; 
+   left: 0px; 
+   right: 0px; 
+}

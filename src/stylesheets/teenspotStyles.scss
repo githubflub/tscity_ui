@@ -1,0 +1,160 @@
+@import 'stylesheets/variables.scss';
+
+html {
+   height: 100%;
+   width: 100%;
+   display: flex;
+}
+
+body {
+   height: 100%;
+   width: 100%;
+   display: flex;
+   background: linear-gradient(#2d514f, #39b1a8, #39b1a8);
+   background: rgba(0,0,0,0.05);
+   background-attachment: fixed;
+   margin: 0px;
+   /* font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;  */
+   font-family: Arial;
+   font-size: 14px;
+
+   /* Required for draggable popper */
+   overflow: hidden;
+}
+
+*, ::before, ::after {
+   -moz-box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+   box-sizing: border-box;
+}
+
+a {
+   color: $teal_main;
+   text-decoration: none;
+
+   &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+   }
+}
+
+.skip-link {
+   height: 0px;
+   overflow: hidden;
+}
+
+.teenspot_app_root {
+   height: 100%;
+   width: 100%;
+   display: flex;
+}
+
+@media all and (min-width: 768px) {
+   .tsContainer {
+      display: flex;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+
+   }
+}
+
+@media all and (min-width: 1023px) {
+   .tsContainer {
+      display: flex;
+      justify-content: center;
+      width: 973px;
+      margin-left: auto;
+      margin-right: auto;
+   }
+}
+
+.tsRow {
+   flex: 1;
+   display: flex;
+   flex-flow: row wrap;
+   width: 100%;
+   justify-content: space-between;
+}
+
+.ts_row__spacing {
+   & > div {
+      margin-bottom: 10px;
+      margin-right: 10px;
+
+      &:last-child {
+         margin-right: 0px;
+      }
+   }
+}
+
+.tsCol {
+   display: flex;
+   flex-direction: column;
+}
+
+.lightblue { background-color: #F1F8FF; }
+.darkblue { background-color: #DCEEFF; }
+
+.ts_material_form {
+
+}
+
+form {
+   display: flex;
+   flex-direction: column;
+}
+
+.ts_material_form__row {
+   display: flex;
+   align-items: flex-end;
+   margin-bottom: 12px;
+}
+
+.ts_material_form__form_help_text {
+   margin-top: 4px;
+   margin-bottom: 8px;
+   font-size: 12px;
+   color: $red_main;
+}
+
+.ts_button_div {
+   padding: 0px;
+   border: none;
+   outline: none;
+   font: inherit;
+   color: inherit;
+   background: none;
+   all: unset;
+   -webkit-text-fill-color: currentColor;
+}
+
+.ts_border_bottom,
+.MuiButtonBase-root.ts_border_bottom {
+   border-bottom: 1px solid rgba($teal_light, 0.5);
+}
+
+.TSBody {
+   .TSContainedDialog {
+      background-color: white;
+      color: black;
+   }
+
+   .ts_notif_dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 4px;
+      background-color: $red_main;
+   }
+}
+
+.TSBody .TSBase__dark {
+   background-color: #1f1f1f;
+   color: rgba(white, 0.88);
+
+   .TSContainedDialog {
+      background-color: #1f1f1f;
+      color: rgba(white, 0.88);
+   }
+}

@@ -1,0 +1,19 @@
+.TSMenuItem {
+
+   &.TSMenuItem__clickable {
+      cursor: pointer;
+
+      &:hover {
+         background-color: rgba(black,0.05);
+      }
+   }
+}
+
+.TSMenuItem.TSMenuItem__dark {
+   &.TSMenuItem__clickable {
+
+      &:hover {
+         background-color: rgba(white,0.05);
+      }
+   }
+}

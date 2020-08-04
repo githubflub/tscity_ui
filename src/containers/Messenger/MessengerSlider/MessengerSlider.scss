@@ -1,0 +1,15 @@
+.MessengerSlider {
+   transition: transform 0.03s ease-out;
+
+   // This slider appears in parent div that
+   // has pointer-events: none.
+   // That CSS settings makes all clicks
+   // pass right through the parent and
+   // its children.
+   //
+   // Obviously, I want people to be able
+   // to click on the slider, so I have
+   // to reset pointer-events back to
+   // auto here.
+   pointer-events: auto;
+}

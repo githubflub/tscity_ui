@@ -1,0 +1,20 @@
+{
+   "compilerOptions": {
+     "baseUrl": ".",
+     "experimentalDecorators": true,
+     "downlevelIteration": true,
+     "allowSyntheticDefaultImports": true,
+     "esModuleInterop": true,
+     "jsx": "react",
+     "lib": ["dom", "es2015", "esnext"],
+     "module": "commonjs",
+     "moduleResolution": "node",
+     "traceResolution": true,
+     "paths": {
+       "@tscity/*": ["node_modules/@tscity/*"],
+       "*": ["src/*"]
+     },
+     "resolveJsonModule": true
+   },
+   "exclude": ["dist", "__tests__", "wallaby.js"]
+ }
