@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import loadable from '@loadable/component'
 
-// Render!
 const root_element = document.getElementById('app-root')
 
 let render = () => {
