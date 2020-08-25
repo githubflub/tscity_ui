@@ -8,7 +8,7 @@ export function TSHelmet(props) {
       children,
    } = props;
 
-   const base_title = 'TS City!'
+   const base_title = 'TSCity'
    const total_notifications = message_notifications.length + notifications.length;
    const full_title = total_notifications > 0
       ? `(${total_notifications}) ` + base_title

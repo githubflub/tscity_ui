@@ -13,6 +13,7 @@ import 'layouts/AppLayout/AppLayout.scss'
 import { useGetUserQuery } from 'apollo/hooks/useGetUserQuery'
 import AddFriendButton from '../../components/AddFriendButton/AddFriendButton'
 import { useGetProfileQuery } from 'apollo/hooks/useGetProfileQuery'
+import { TSHelmet } from 'containers/TSHelmet/TSHelmet'
 
 import './Profile.scss'
 // Uses profileTemplateStyles.css
@@ -39,6 +40,7 @@ function Profile(props) {
 
    return (
       <div className="teenspot_app_layout__page">
+         <TSHelmet><title>{public_username}</title></TSHelmet>
          <div className="teenspot_app_layout__page_container" style={{width: "100%"}}>
             <div className="ts_profile_grid">
                <TSCard className="ts_profile__header" color="blue" style={{ width: '100%' }}>

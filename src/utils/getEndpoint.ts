@@ -1,6 +1,6 @@
 
 // Apollo GraphQL
-export const USE_LOCAL_GRAPHQL_SERVER = true
+export const USE_LOCAL_GRAPHQL_SERVER = false
 export function getGraphQlEndpoint() {
    return getEndpoint('GraphQL', USE_LOCAL_GRAPHQL_SERVER, API_URL_LOCAL, API_URL)
 }
