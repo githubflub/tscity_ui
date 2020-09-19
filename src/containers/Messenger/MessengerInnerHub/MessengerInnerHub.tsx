@@ -30,6 +30,14 @@ export default function MessengerInnerHub(props) {
          // there is already a conversation.
          for (let i = dms.length - 1; i >= 0; i--) {
             const dm = dms[i];
+
+            // Special case: handle self DMs
+            if (user.id === self.id) {
+               if (dm.access_users.length !== 1) {
+                  continue;
+               }
+            }
+
             if (dm.access_users.includes(user.id)) {
                // console.log("Got someone!!!");
                return false;

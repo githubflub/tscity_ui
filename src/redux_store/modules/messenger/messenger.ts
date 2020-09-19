@@ -1,5 +1,6 @@
-import { UPDATE_THREAD_READ_TIME } from "apollo/mutation/UPDATE_THREAD_READ_TIME"
+import axios from 'axios';
 import { GET_SELF_QUERY } from "apollo/query/GET_SELF_QUERY"
+import { getGraphQlEndpoint } from 'utils/getEndpoint'
 
 export const SEND_OPEN_CONVERSATION_REQUEST = 'SEND_OPEN_CONVERSATION_REQUEST'
 export const MESSENGER_OPEN_CONVERSATION = 'MESSENGER_OPEN_CONVERSATION'
@@ -15,6 +16,8 @@ type ConversationItemType = {
    target_username: string;
    thread_id?: number;
    is_open: boolean;
+   sender_user_id?: number;
+   sender_username?: string;
 }
 
 export interface SendOpenConversationRequestAction {
@@ -73,9 +76,40 @@ export function sendOpenConversationRequestThunk(payload: SendOpenConversationRe
       const data = apollo_client.readQuery({ query: GET_SELF_QUERY })
       const { getMyDMs: dms } = data;
 
+      if (!payload.sender_user_id && payload.sender_user_id !== 0) {
+         console.error("You need to pass sender_user_id.");
+      }
+
       for (let i = 0; i < dms.length; i++) {
          const dm = dms[i];
-         if (dm.access_users.includes(payload.target_user_id)) {
+         const access_users = dm.access_users.slice() as number[];
+
+         // console.log("access_users 1", JSON.stringify(access_users))
+
+         // Special case. Be mindful of self-DMs.
+         if (
+            access_users.length === 1 // indicates self DM
+            && payload.target_user_id !== payload.sender_user_id
+         ) {
+            // We're not looking for a self DM, so pass.
+            continue
+         }
+
+         const index_target = access_users.indexOf(payload.target_user_id)
+         if (index_target > -1) {
+            access_users.splice(index_target, 1);
+         }
+
+         // console.log("access_users 2", JSON.stringify(access_users))
+
+         const index_sender = access_users.indexOf(payload.sender_user_id)
+         if (index_sender > -1) {
+            access_users.splice(index_sender, 1);
+         }
+
+         // console.log("access_users 3", JSON.stringify(access_users))
+
+         if (!access_users.length) {
             payload.thread_id = dm.id;
             break;
          }
@@ -102,12 +136,6 @@ export function openConversation(payload: OpenConversationAction['payload']): Me
 export function updateConversationLocalReadTime(payload: ConversationItemType) {
    return (dispatch, getState, context) => {
       updateLocalReadTime({ ...context, getState }, payload);
-   }
-}
-
-export function updateConversationReadTime(payload: ConversationItemType) {
-   return (dispatch, getState, context) => {
-      updateReadTime({ ...context, getState }, payload)
    }
 }
 
@@ -168,18 +196,48 @@ function updateLocalReadTime(tools, payload) {
    }
 }
 
-async function updateReadTime(tools, payload) {
-   // console.log("UPDATING READ_TIME", payload);
+export async function updateReadTimeAxios(tools, payload) {
+   // console.log("UPDATING READ_TIME WITH AXIOS", payload);
    if (payload.thread_id) {
-      const { apollo_client } = tools;
-      const result = await apollo_client.mutate({
-         mutation: UPDATE_THREAD_READ_TIME,
-         variables: {
-            thread_id: +payload.thread_id,
-         }
-      })
+      const { identity_token } = tools;
+      try {
+         const endpoint = getGraphQlEndpoint();
 
-      // console.log("update_thread_read_time", result);
+         // This is really stupid, but I can't make
+         // this request using apollo_client during a
+         // page refresh. It throws a "Network failed to
+         // fetch" error, so I am using axios instead.
+         // This works, but it's also really bad, because
+         // I can't just have random queries like this
+         // floating in the ether.
+         //
+         const result = await axios
+            .post(endpoint, {
+                  operationName: "UpdateThreadReadTime",
+                  query: `mutation UpdateThreadReadTime($thread_id: Int!) {
+                     updateThreadReadTime(thread_id: $thread_id) {
+                        thread_id
+                        user_id
+                        timestamp
+                         __typename
+                     }
+                  }`,
+                  variables: {
+                     thread_id: +payload.thread_id,
+                  }
+               },
+               {
+                  headers: {
+                     authorization: identity_token,
+                  }
+               }
+            )
+
+         console.log("update_thread_read_time", result);
+      }
+      catch (error) {
+         console.log("updateReadTime failed", error);
+      }
    }
    else {
       // console.log("updateReadTime item did not have thread_id");

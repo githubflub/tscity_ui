@@ -1,12 +1,11 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux'
 import MessengerSlider from '../MessengerSlider/MessengerSlider'
 import {
    toggleConversationSlider,
-   updateConversationLocalReadTime,
-   updateConversationReadTime
 } from 'redux_store/modules/messenger/messenger'
 import { useMessengerConversation } from '../useMessengerConversation'
+import { useUpdateReadTimeHook } from '../useUpdateReadTimeHook'
 
 export default function MessengerConversation(props) {
    const dispatch = useDispatch();
@@ -18,20 +17,7 @@ export default function MessengerConversation(props) {
       ConversationHeader,
    } = useMessengerConversation(item)
 
-   React.useEffect(
-      () => {
-         if (is_open) {
-            dispatch(updateConversationLocalReadTime(item))
-         }
-
-         return () => {
-            if (is_open) {
-               dispatch(updateConversationReadTime(item))
-            }
-         }
-      },
-      [is_open]
-   )
+   useUpdateReadTimeHook(item);
 
    return (
       <MessengerSlider
