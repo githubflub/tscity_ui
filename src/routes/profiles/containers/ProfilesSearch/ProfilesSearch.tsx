@@ -31,14 +31,33 @@ export default function ProfileSearch(props) {
             </div>
             <ChatScrollContainer no_stick hidden>
                <div className="ts_app_layout__section" style={{ margin: 'auto' }}>
-                  {!!search_results.length && <div className="profiles_search__results">
-                     <h2>{`Search Results`}</h2>
-                     {search_results.map((user, i) => <UserTile key={i} user={user} use_internal_url />)}
-                  </div>}
-                  {!!latest_users.length && <div className="profiles_search__results">
-                     <h2>{`Check out these folks!`}</h2>
-                     {latest_users.map((user, i) => <UserTile key={i} user={user} use_internal_url style={{ height: '195px' }} />)}
-                  </div>}
+
+                  {!!search_results.length && <React.Fragment>
+                     <h1>{`Search Results`}</h1>
+                     <div className="profiles_search__results">
+                        {search_results.map((user, i) => <UserTile
+                           key={i}
+                           user={user}
+                           use_internal_url
+                           className="profiles_search__result"
+                        />)}
+                     </div>
+                     <div style={{ minHeight: "60px" }} />
+                  </React.Fragment>}
+
+                  {!!latest_users.length && <React.Fragment>
+                     <h1>{`Check out these folks!`}</h1>
+                     <div className="profiles_search__results">
+                        {latest_users.map((user, i) => <UserTile
+                           key={i}
+                           user={user}
+                           use_internal_url
+                           className="profiles_search__result"
+                        />)}
+                     </div>
+                     <div style={{ minHeight: "60px" }} />
+                  </React.Fragment>}
+
                </div>
             </ChatScrollContainer>
          </div>

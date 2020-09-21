@@ -5,7 +5,10 @@ import { sendOpenConversationRequestThunk } from 'redux_store/modules/messenger/
 import { useGetSelfQuery } from 'apollo/hooks/useGetSelfQuery'
 
 export function SendMessageButton(props) {
-   const { user } = props;
+   const {
+      user,
+      ...other
+   } = props;
    const dispatch = useDispatch();
    const { is_authenticated } = useSelector(state => state.session);
    const { user: self } = useGetSelfQuery();
@@ -27,6 +30,7 @@ export function SendMessageButton(props) {
             sender_username: self.username,
             is_open: true,
          }))}
+         {...other}
       >
          {'Send Message'}
       </Button>

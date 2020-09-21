@@ -5,7 +5,11 @@ import { useGetSelfQuery } from 'apollo/hooks/useGetSelfQuery';
 import { useBlockedUsers } from 'hooks/BlockedUsers/useBlockedUsers'
 
 export function BlockUserButton(props) {
-   const { user, contained } = props;
+   const {
+      user,
+      contained,
+      ...other
+   } = props;
    const { is_authenticated } = useSelector(state => state.session);
    const { user: self } = useGetSelfQuery();
    const {
@@ -31,6 +35,7 @@ export function BlockUserButton(props) {
                event.stopPropagation();
                openBlockUserDialog(user)
             }}
+            {...other}
          >
             {'Block User'}
          </Button>

@@ -43,6 +43,7 @@ export default function HeaderCloseButton(props) {
    let styles = absolute? {
       position: 'absolute',
       right: '0px',
+      top: '0px',
    } : {}
 
    return (

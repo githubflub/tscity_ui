@@ -5,6 +5,8 @@ import Paper from '@material-ui/core/Paper';
 import HeaderCloseButton from 'components/HeaderCloseButton/HeaderCloseButton'
 import { SendMessageButton } from 'containers/SendMessageButton/SendMessageButton';
 import { BlockUserButton } from 'containers/BlockUserButton/BlockUserButton'
+import AvatarCircle from 'containers/AvatarCircle/AvatarCircle'
+import UserTag from 'containers/UserTag/UserTag'
 
 const UserPaper = withStyles({
    root: {
@@ -20,23 +22,32 @@ export default function UserTile(props) {
       user,
       onCloseClick,
       use_internal_url,
-      style,
+      ...other
    } = props;
 
    const url = `/profiles/${user.username}`
    const user_display_name = user.display_name || user.username;
+   const name_style = {
+      fontSize: "24px",
+      color: "rgba(255, 255, 255, 0.8)",
+      overflow: "hidden",
+      whiteSpace: "nowrap",
+      textOverflow: "ellipsis",
+   }
 
    return (
-      <UserPaper elevation={3} style={style}>
-         <div>
-            {onCloseClick && <HeaderCloseButton onClick={onCloseClick} absolute />}
-            {use_internal_url?
-               <Link to={url}>{user_display_name}</Link>
-               : <a href={url} target="_blank">{user_display_name}</a>
-            }
-            <SendMessageButton user={user} />
-            <BlockUserButton user={user} />
+      <div {...other}>
+         {onCloseClick && <HeaderCloseButton onClick={onCloseClick} absolute />}
+         <UserTag user={user} style={{ paddingLeft: "10px", paddingTop: "10px" }} />
+         <div style={{
+            display: "flex",
+            padding: "10px 10px 0px",
+            flexWrap: "wrap",
+         }}>
+            <SendMessageButton user={user} style={{ marginBottom: "10px" }} />
+            <div style={{ width: "10px", minWidth: "10px" }}/>
+            <BlockUserButton user={user} style={{ marginBottom: "10px" }} />
          </div>
-      </UserPaper>
+      </div>
    )
 }

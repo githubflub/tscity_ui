@@ -2,6 +2,17 @@ import React from 'react'
 import DraggablePopper from 'components/DraggablePopper/DraggablePopper';
 import { useMembersList } from 'TeenSpotChatClient/hooks/useMembersList'
 import UserTile from 'containers/UserTile/UserTile'
+import Paper from '@material-ui/core/Paper';
+import { withStyles } from '@material-ui/core/styles';
+
+const UserPaper = withStyles({
+   root: {
+      backgroundColor: '#1f1f1f',
+      color: 'rgba(255,255,255,0.88)',
+      width: '100%',
+      height: '195px',
+   }
+})(Paper);
 
 export default function UserPopper(props) {
    const { anchorEl, user } = props;
@@ -18,7 +29,9 @@ export default function UserPopper(props) {
          anchorEl={anchorEl}
          placement="bottom-end"
       >
-         <UserTile user={user} onCloseClick={onCloseClick} style={{ width: '340px' }} />
+         <UserPaper elevation={3}>
+            <UserTile user={user} onCloseClick={onCloseClick} style={{ width: '340px' }} />
+         </UserPaper>
       </DraggablePopper>
    )
 }

@@ -3,6 +3,14 @@
    align-items: center;
 }
 
+.user_tag__name {
+   font-size: 24px;
+   color: rgba(white, 0.8);
+   overflow: hidden;
+   white-space: nowrap;
+   text-overflow: ellipsis;
+}
+
 .user_tag__avatar_circle {
-   margin-right: 16px;
+   margin-right: 10px;
 }

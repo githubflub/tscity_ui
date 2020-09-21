@@ -1,8 +1,8 @@
 import React from 'react'
 import MenuPopper from 'components/MenuPopper'
 import MenuItem from '@material-ui/core/MenuItem';
-import AvatarCircle from 'containers/AvatarCircle'
-import UserTag from 'containers/UserTag'
+import AvatarCircle from 'containers/AvatarCircle/AvatarCircle'
+import UserTag from 'containers/UserTag/UserTag'
 import { useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
@@ -10,6 +10,7 @@ import { teenspotSignOut } from 'redux_store/modules/session'
 import { useScreenSize } from 'hooks/useScreenSize';
 import { useNavMenu } from '../../useNavMenu'
 import { MenuHeader } from 'components/MenuHeader/MenuHeader'
+import { useGetSelfQuery } from 'apollo/hooks/useGetSelfQuery'
 import './UserMenu.scss'
 
 const NAME = 'UserMenu';
@@ -18,6 +19,7 @@ export function useUserMenu() {
    const history = useHistory();
    const dispatch = useDispatch();
    const [screen_width] = useScreenSize();
+   const { user: self } = useGetSelfQuery();
    const {
       open_menu_name,
       handleClick,
@@ -43,7 +45,14 @@ export function useUserMenu() {
    const menu_content = (
       <React.Fragment>
          <MenuHeader>
-            <UserTag />
+            <UserTag
+               user={self}
+               use_internal_url
+               onUsernameClick={handleClose}
+               style={{
+                  paddingTop: "10px"
+               }}
+            />
          </MenuHeader>
 
          {menu_list}
