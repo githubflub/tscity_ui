@@ -7,6 +7,7 @@ export const TSCC_OPEN_NON_CHAT_ROOM = 'TSCC_OPEN_NON_CHAT_ROOM'
 export const TSCC_CLOSE_NON_CHAT_ROOM = 'TSCC_CLOSE_NON_CHAT_ROOM'
 export const TSCC_RESET_MESSAGES_BEFORE_CHAT_DATA = 'TSCC_RESET_MESSAGES_BEFORE_CHAT_DATA'
 export const TSCC_SET_USER_POPPER = 'TSCC_SET_USER_POPPER'
+export const TSCC_UPDATE_CURRENT_INPUT_VALUE_ACTION = 'TSCC_UPDATE_CURRENT_INPUT_VALUE_ACTION'
 
 export const TSCC_ADD_MESSAGES_BEFORE_CHAT_DATA = 'TSCC_ADD_MESSAGES_BEFORE_CHAT_DATA'
 
@@ -68,6 +69,13 @@ interface SetUserPopperAction {
    }
 }
 
+interface ChatUpdateCurrentInputValueAction {
+   type: typeof TSCC_UPDATE_CURRENT_INPUT_VALUE_ACTION,
+   payload: {
+      current_input_value: string;
+   }
+}
+
 export type ChatActionTypes = (
    ToggleNonChatRoomAction
    | OpenNonChatRoomAction
@@ -77,7 +85,15 @@ export type ChatActionTypes = (
    | SetUserPopperAction
    | LeaveRoomsAction
    | JoinRoomsAction
+   | ChatUpdateCurrentInputValueAction
 );
+
+export function updateCurrentInputValue(payload: ChatUpdateCurrentInputValueAction['payload']): ChatActionTypes {
+   return {
+      type: TSCC_UPDATE_CURRENT_INPUT_VALUE_ACTION,
+      payload,
+   }
+}
 
 export function joinRooms(payload: JoinRoomsPayloadType) {
    return async (dispatch) => {
@@ -151,6 +167,7 @@ export interface ChatStateType {
    selected_non_chat_room: string;
    open_rooms: string[];
    user_popper: string;
+   current_input_value: string;
    messages_before_chat_data: ({
       id: number,
       content: string;
@@ -163,6 +180,10 @@ const initial_state: ChatStateType = {
    non_chat_room_is_open: false,
    selected_non_chat_room: undefined,
    open_rooms: [],
+
+   // Used for preserving input value when
+   // switching GUIs (like going from twitch to classic)
+   current_input_value: '',
 
    // When someone clicks a user in
    // the users list, a popper opens.
@@ -190,6 +211,14 @@ export default function chatReducer(state = initial_state, action: ChatActionTyp
    let name, error, selected_non_chat_room, non_chat_room_is_open;
 
    switch (action.type) {
+      case TSCC_UPDATE_CURRENT_INPUT_VALUE_ACTION: {
+         return {
+            ...state,
+            current_input_value: typeof action.payload.current_input_value === 'string'
+               ? action.payload.current_input_value
+               : ''
+         }
+      }
       case TSCC_OPEN_NON_CHAT_ROOM:
          return {
             ...state,

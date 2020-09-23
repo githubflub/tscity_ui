@@ -54,7 +54,7 @@ export default function EditVerifiableAttribute(props) {
                })
             }
             else {
-               console.log("Sending verification code was success")
+               // console.log("Sending verification code was success")
             }
          }
       },

@@ -42,7 +42,13 @@ export default function TSChatTwitchGUI(props) {
       rendered_messages,
       messages_before_chat_data,
    } = chat_data;
-   const { message, setMessage, onInputSubmit } = useChatInput();
+   const {
+      message,
+      setMessage,
+      onInputSubmit,
+      onChatInputBlur,
+      chat_input_ref,
+   } = useChatInput();
 
    const {
       openLoginDialog,
@@ -93,6 +99,8 @@ export default function TSChatTwitchGUI(props) {
                         // multiline
                         value={message.value || ''}
                         onChange={event => setMessage({ value: event.target.value })}
+                        inputRef={chat_input_ref}
+                        onBlur={onChatInputBlur}
                      />
                   </form>
                ) : (

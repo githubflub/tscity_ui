@@ -55,7 +55,7 @@ export function onJoinRooms(tools, data) {
                }
             }
 
-            console.log("joinRoom updated_room", updated_room)
+            // console.log("joinRoom updated_room", updated_room)
 
             return updated_room;
          })

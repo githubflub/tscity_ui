@@ -37,7 +37,7 @@ export function signUp(user: SignUpUser): Promise<{ data?: ISignUpResult, error?
          return Auth.signUp(signup_data)
       })
       .then(data => {
-         console.log("RESULT: Auth.signUp - ", data);
+         // console.log("RESULT: Auth.signUp - ", data);
          return { data }
       })
       .catch(error => {

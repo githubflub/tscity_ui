@@ -7,7 +7,7 @@
 // UNLESS there are already values in redux?
 
 export function getRoomsToJoin(options, chat_data, use_redux_store = true) {
-   console.log("getRoomsToJoin: Getting rooms to join!")
+   // console.log("getRoomsToJoin: Getting rooms to join!")
    let rooms_to_join
    let current_room
    let redux_store_has_been_used = false;
@@ -43,7 +43,7 @@ export function getRoomsToJoin(options, chat_data, use_redux_store = true) {
    }
 
 
-   console.log("rooms_to_join", rooms_to_join)
+   // console.log("rooms_to_join", rooms_to_join)
    const result = {
       rooms_to_join,
       current_room

@@ -7,7 +7,7 @@ export type ConfirmSignUpUser = {
 }
 
 export async function confirmSignUp(user: ConfirmSignUpUser) {
-   console.log("confirm sign up user", user);
+   // console.log("confirm sign up user", user);
    try {
       const data = await Auth.confirmSignUp(user.alias.toLowerCase().trim(), user.verification_code)
       return { data }

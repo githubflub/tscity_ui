@@ -4,6 +4,7 @@ import classnames from 'classnames'
 function TsccChatInput(props) {
    const {
       validation_status,
+      input_ref,
       ...input_props
    } = props;
 
@@ -14,7 +15,7 @@ function TsccChatInput(props) {
 
    return (
       <div className={classname}>
-         <input {...input_props} />
+         <input ref={input_ref} {...input_props} />
       </div>
    )
 }

@@ -7,7 +7,7 @@ export class FixedAWSIoTProvider extends AWSIoTProvider {
 		url,
 		clientId,
 	}: MqttProvidertOptions): Promise<any> {
-		console.log('FixedAWSIoTProvider - Creating new MQTT client', clientId);
+		// console.log('FixedAWSIoTProvider - Creating new MQTT client', clientId);
 
 		// @ts-ignore
 		const client = new Paho.Client(url, clientId);

@@ -32,12 +32,11 @@ class TSChatClientClass extends WebSocketClient {
    async onConnectAttempt() {
       const { apollo_client, dispatch } = this.tools;
 
-      console.log("Making GQL request from ws client!!")
       const gql_request_options: QueryOptions = {
          query: GET_CHAT_DATA_QUERY,
       }
       this.chat_data = await apollo_client.query(gql_request_options)
-      console.log("CHAT_DATA", this.chat_data);
+      // console.log("CHAT_DATA", this.chat_data);
 
       // At this point, we have the user's chat preferences.
       // Specifically, which room they want to join first.
@@ -71,7 +70,6 @@ class TSChatClientClass extends WebSocketClient {
 
       // Need to join rooms!
       if (!!this.chat_data.data) {
-         console.log("TSClient: WS join room");
          this.joinRooms(this.rooms_to_join.rooms_to_join);
       }
 

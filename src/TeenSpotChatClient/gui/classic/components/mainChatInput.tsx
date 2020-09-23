@@ -12,7 +12,13 @@ import font_color_button_icon from 'TeenSpotChatClient/assets/tsccGrayButtonFont
 function ChatInputArea(props) {
    const [openMenuElement, setOpenMenuElement] = useState(null)
    const [openMenuButton, setOpenMenuButton] = useState(null)
-   const { message, setMessage, onInputSubmit } = useChatInput()
+   const {
+      message,
+      setMessage,
+      onInputSubmit,
+      onChatInputBlur,
+      chat_input_ref,
+   } = useChatInput()
    const {
       username,
       password,
@@ -150,6 +156,8 @@ function ChatInputArea(props) {
                               value={message.value || ''}
                               maxLength={280}
                               onChange={event => setMessage({ value: event.target.value || '' })}
+                              input_ref={chat_input_ref}
+                              onBlur={onChatInputBlur}
                            />
                         :  <div className="tscc_chat_login_input_wrapper">
                               <TsccChatInput

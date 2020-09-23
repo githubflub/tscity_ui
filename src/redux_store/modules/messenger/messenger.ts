@@ -10,6 +10,7 @@ export const MESSENGER_HUB_TOGGLE_SLIDER = 'MESSENGER_HUB_TOGGLE_SLIDER'
 export const MESSENGER_TOGGLE_CONVERSATION_SLIDER = 'MESSENGER_TOGGLE_CONVERSATION_SLIDER'
 export const MESSENGER_DEACTIVATE_CONVERSATION = 'MESSENGER_DEACTIVATE_CONVERSATION'
 export const MESSENGER_HUB_SET_IS_OPEN = 'MESSENGER_HUB_SET_IS_OPEN'
+export const MESSENGER_UPDATE_CURRENT_INPUT = 'MESSENGER_UPDATE_CURRENT_INPUT'
 
 type ConversationItemType = {
    target_user_id: number;
@@ -18,6 +19,7 @@ type ConversationItemType = {
    is_open: boolean;
    sender_user_id?: number;
    sender_username?: string;
+   current_input_value?: string;
 }
 
 export interface SendOpenConversationRequestAction {
@@ -58,6 +60,11 @@ interface DeactivateConversationAction {
    type: typeof MESSENGER_DEACTIVATE_CONVERSATION;
 }
 
+interface UpdateCurrentInputValueAction {
+   type: typeof MESSENGER_UPDATE_CURRENT_INPUT;
+   payload: ConversationItemType;
+}
+
 
 type MessengerActionTypes = (
    SendOpenConversationRequestAction
@@ -68,6 +75,7 @@ type MessengerActionTypes = (
    | ToggleConversationSliderAction
    | DeactivateConversationAction
    | MessengerHubSetIsOpenAction
+   | UpdateCurrentInputValueAction
 )
 
 export function sendOpenConversationRequestThunk(payload: SendOpenConversationRequestAction['payload']) {
@@ -116,6 +124,13 @@ export function sendOpenConversationRequestThunk(payload: SendOpenConversationRe
       }
 
       dispatch(sendOpenConversationRequest(payload));
+   }
+}
+
+export function updateCurrentInputValue(payload: UpdateCurrentInputValueAction['payload']): MessengerActionTypes {
+   return {
+      type: MESSENGER_UPDATE_CURRENT_INPUT,
+      payload
    }
 }
 
@@ -233,10 +248,10 @@ export async function updateReadTimeAxios(tools, payload) {
                }
             )
 
-         console.log("update_thread_read_time", result);
+         // console.log("update_thread_read_time", result);
       }
       catch (error) {
-         console.log("updateReadTime failed", error);
+         // console.log("updateReadTime failed", error);
       }
    }
    else {
@@ -293,6 +308,35 @@ const initial_state = {
 
 export default function messengerReducer(state = initial_state, action: MessengerActionTypes = {} as MessengerActionTypes) {
    switch (action.type) {
+      case MESSENGER_UPDATE_CURRENT_INPUT: {
+         const { target_user_id, target_username, current_input_value } = action.payload;
+         const active_conversation = state.active_conversation
+
+         return {
+            ...state,
+            active_conversation: active_conversation.target_user_id === target_user_id && active_conversation.target_username === target_username
+               ? {
+                  ...active_conversation,
+                  current_input_value,
+               }
+               : active_conversation,
+            open_conversations: state.open_conversations
+               .map((item, i) => {
+                  if (
+                     item.target_user_id === target_user_id
+                     && item.target_username === target_username
+                  ) {
+                     return {
+                        ...item,
+                        current_input_value
+                     }
+                  }
+
+                  return item;
+               })
+         };
+      }
+
       case SEND_OPEN_CONVERSATION_REQUEST:
       case MESSENGER_OPEN_CONVERSATION: {
          const { thread_id, target_user_id, target_username } = action.payload;
@@ -305,7 +349,10 @@ export default function messengerReducer(state = initial_state, action: Messenge
          return {
             ...state,
             active_conversation: index < 0
-               ? action.payload
+               ? {
+                   ...action.payload,
+                   remove_from_open_conversations_on_close: window.innerWidth < TABLET_SIZE? true : false
+               }
                : {
                   ...state.open_conversations[index],
                   ...action.payload,
@@ -423,9 +470,24 @@ export default function messengerReducer(state = initial_state, action: Messenge
          }
       }
       case MESSENGER_DEACTIVATE_CONVERSATION: {
+         const active_conversation = state.active_conversation
+         // console.log("active_conversation", active_conversation);
          return {
             ...state,
-            active_conversation: null
+            active_conversation: null,
+            open_conversations: (active_conversation && active_conversation.remove_from_open_conversations_on_close)
+               ? state.open_conversations
+                  .filter(item => {
+                     if (
+                        item.target_user_id === active_conversation.target_user_id
+                        && item.target_username === active_conversation.target_username
+                     ) {
+                        return false
+                     }
+
+                     return true
+                  })
+               : state.open_conversations,
          }
       }
 

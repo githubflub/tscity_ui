@@ -6,7 +6,7 @@ class ResizeListenerClass {
 
    constructor() {
       ResizeListenerClass.instance_count += 1;
-      console.log("ResizeListenerClass instances:", ResizeListenerClass.instance_count)
+      // console.log("ResizeListenerClass instances:", ResizeListenerClass.instance_count)
 
       // This is so addEventListener and removeEventListener work properly.
       this.push = this.push.bind(this);

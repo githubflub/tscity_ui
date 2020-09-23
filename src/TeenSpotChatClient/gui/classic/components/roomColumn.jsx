@@ -25,7 +25,7 @@ function tsccRoomColumn(props) {
 
    const onCloseButtonClick = () => {
       leaveRoom(current_room)
-      console.log("You clicked the close button!");
+      // console.log("You clicked the close button!");
    }
 
    return (

@@ -8,7 +8,7 @@ import {
 import DialogContent from '@material-ui/core/DialogContent'
 
 const ModalBody = withStyles((theme: Theme) => {
-   console.log("theme", theme)
+   // console.log("theme", theme)
    return createStyles({
       root: {
          padding: '0px',

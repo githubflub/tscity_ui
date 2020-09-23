@@ -31,7 +31,7 @@ export class IoTListener {
 
       this.connect();
       IoTListener.instance_count += 1;
-      console.log("IoTListener instances:", IoTListener.instance_count)
+      // console.log("IoTListener instances:", IoTListener.instance_count)
 
       // When user logs in, we'll need to update
       // subscribed topics, so create an auth listener.
@@ -41,11 +41,11 @@ export class IoTListener {
    }
 
    private async onAuthEvent(data) {
-      console.log("IoTListener - AuthEvent", data);
+      // console.log("IoTListener - AuthEvent", data);
       const { payload } = data;
       switch (payload.event) {
          case 'signIn':
-            console.log("IoTListener - User signed in. Time to update subscriptions!")
+            // console.log("IoTListener - User signed in. Time to update subscriptions!")
             await this.attachIotPolicy();
             this.subscribe();
             break;
@@ -102,7 +102,7 @@ export class IoTListener {
          topics.push(`tscity/user/${identity.sub}`)
       }
 
-      console.log("IoTListener - Subscribing to topics", topics);
+      // console.log("IoTListener - Subscribing to topics", topics);
       const observable_topics = PubSub.subscribe(topics);
       this.RetryAgent.onConnectAttempt();
       this.active_subscriptions = observable_topics.subscribe({
@@ -118,7 +118,7 @@ export class IoTListener {
       if (typeof error === 'string') {
          // Disconnected (Ex. on network lost)
          if (error.startsWith(DISCONNECTED_ERROR_CODE)) {
-            console.log("IoTListener -", "Error was just a disconnection");
+            // console.log("IoTListener -", "Error was just a disconnection");
             this.reconnect();
          }
       }
@@ -126,13 +126,13 @@ export class IoTListener {
          error.errorCode === 7
          && !error.invocationContext
       ) {
-         console.log("IoTListener -", "Failed to connect 1");
+         // console.log("IoTListener -", "Failed to connect 1");
          this.reconnect();
       }
       else if ( // Failed to connect
          error.message.endsWith('Invalid state not connected.')
       ) {
-         console.log("IoTListener -", "Failed to connect 2");
+         // console.log("IoTListener -", "Failed to connect 2");
          this.reconnect();
       }
    }
@@ -150,7 +150,7 @@ export class IoTListener {
 
 
    private next(data) {
-      console.log('IoTListener: Message received', data.value);
+      // console.log('IoTListener: Message received', data.value);
       // console.log(JSON.stringify(data.value))
       const subtopic: keyof typeof IoTSubtopics = data.value.subtopic || ''
 

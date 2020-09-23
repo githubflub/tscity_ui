@@ -10,6 +10,7 @@ import { useIsMobile } from 'hooks/useIsMobile'
 import {
    deactivateConversation,
    closeConversation,
+   updateCurrentInputValue,
 } from 'redux_store/modules/messenger/messenger'
 import HeaderCloseButton from 'components/HeaderCloseButton/HeaderCloseButton'
 
@@ -26,6 +27,21 @@ export function useMessengerConversation(item) {
    const { dms } = useGetSelfQuery();
    const { user: opposite_user } = useGetUserQuery({ /* id: target_user_id, */ username: target_username })
    const thread = thread_id? dms.find(t => t.id === thread_id) : null
+
+   // Autofocus messenger input.
+   const text_input = React.useRef(null);
+   React.useEffect(
+      () => {
+         if (text_input.current && is_open) {
+            text_input.current.focus();
+         }
+      },
+      [is_open]
+   )
+
+   const onInputBlur = event => {
+      dispatch(updateCurrentInputValue({ ...item, current_input_value: event.target.value }))
+   }
 
    return {
       opposite_user,
@@ -64,8 +80,10 @@ export function useMessengerConversation(item) {
                <form onSubmit={onInputSubmit} autoComplete="off">
                   <BootstrapInput
                      placeholder="Say hello :)"
+                     inputRef={text_input}
                      value={message_input.value || ''}
                      onChange={event => setMessageInput({ value: event.target.value })}
+                     onBlur={onInputBlur}
                   />
                </form>
             </div>

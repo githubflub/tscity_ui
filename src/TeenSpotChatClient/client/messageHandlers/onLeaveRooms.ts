@@ -29,7 +29,7 @@ export function onLeaveRoomsMessage(tools, data) {
                   })
                }
 
-               console.log("quit updated_rooms", updated_room)
+               // console.log("quit updated_rooms", updated_room)
 
                return updated_room;
             })

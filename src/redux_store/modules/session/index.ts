@@ -376,7 +376,7 @@ export function teenspotSignIn(user: SignInUser) {
             })
 
             const confirmation_result = await confirmSignUp(user as SignInUser & { verification_code: string; });
-            console.log("confirmation_result", confirmation_result)
+            // console.log("confirmation_result", confirmation_result)
 
             if (!(confirmation_result.error && confirmation_result.error.message.includes('Current status is CONFIRMED'))) {
                if (confirmation_result.error) {
@@ -442,7 +442,7 @@ export function teenspotSignUp(user: SignUpUser) {
 
       try {
          const result = await signUp(user);
-         console.log('signUp result', result);
+         // console.log('signUp result', result);
          if (result.error) {
             throw result.error;
          }
@@ -575,7 +575,7 @@ export function teenspotConfirmVerificationCode(verification_type, verification_
                }
             })
 
-            console.log("REDUX-THUNK GRAPHQL: ", result)
+            // console.log("REDUX-THUNK GRAPHQL: ", result)
          }
          catch (error) {
             console.log("REDUX-THUNK GRAPHQL ERROR: ", error)
@@ -637,7 +637,7 @@ export function teenspotSendVerificationCode(verification_type) {
          // All clear. Send verification code
          const send_verification_result = await sendVerificationCode(verification_type)
          // const send_verification_result = {} // testing
-         console.log('RESULT: Send Verification Code', send_verification_result)
+         // console.log('RESULT: Send Verification Code', send_verification_result)
          if (send_verification_result.error) {
             throw send_verification_result.error
          }
@@ -751,7 +751,7 @@ export function teenspotUpdateUserAttributes(attributes, update_type) {
                }
             })
 
-            console.log("REDUX-THUNK GRAPHQL: ", result)
+            // console.log("REDUX-THUNK GRAPHQL: ", result)
          }
          catch (error) {
             console.log("REDUX-THUNK GRAPHQL ERROR: ", error)

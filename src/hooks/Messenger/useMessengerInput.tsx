@@ -6,7 +6,7 @@ import { onReceiveDM } from 'amplify/iot/subtopic_handlers/onReceiveDM'
 import { useDispatch, useSelector } from 'react-redux'
 
 export function useMessengerInput(item) {
-   const [message_input, setMessageInput] = useState({ value: '' })
+   const [message_input, setMessageInput] = useState({ value: item.current_input_value || '' })
    const { target_user_id, target_username } = item;
    const dispatch = useDispatch();
    const state = useSelector(state => state);

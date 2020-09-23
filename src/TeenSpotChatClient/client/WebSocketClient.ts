@@ -24,10 +24,10 @@ export class WebSocketClient {
       // Get user token for authentication with WebSocket server
       const identity_token = await getIdentityToken();
       const url_with_token = `${getWebsocketEndpoint()}${identity_token}`
-      console.log(url_with_token)
+      // console.log(url_with_token)
 
       // Check current state of webSocket
-      console.log("TSClient.connect ws.readyState", this.ws && this.ws.readyState);
+      // console.log("TSClient.connect ws.readyState", this.ws && this.ws.readyState);
 
       if (this.ws) {
          // Reset queue to prevent previous connection's
@@ -40,7 +40,7 @@ export class WebSocketClient {
       this.ws = new WebSocket(url_with_token);
 
       this.ws.onopen = () => {
-         console.log('WS: connected!')
+         // console.log('WS: connected!')
          // All successful connects reset the
          // connect count!
          this.RetryAgent.onConnected();
@@ -57,15 +57,15 @@ export class WebSocketClient {
          // Go through the request queue
          while (this.request_queue.length > 0) {
             const ws_message = this.request_queue.shift()
-            console.log("Sending queued ws message:", ws_message)
+            // console.log("Sending queued ws message:", ws_message)
             this.ws.send(JSON.stringify(ws_message))
          }
       }
 
       this.ws.onclose = () => {
-         console.log('WS: diconnected')
+         // console.log('WS: diconnected')
          let reconnect_delay
-         console.log("ws.onClose: readyState", this.ws && this.ws.readyState)
+         // console.log("ws.onClose: readyState", this.ws && this.ws.readyState)
          if (this.ws && this.ws.readyState !== this.ws.CLOSED) {
             // Consider this:
             // If readyState is OPEN and we attempt to reconnect, 2 connections will be opened = bad.
@@ -106,7 +106,7 @@ export class WebSocketClient {
          this.ws.close()
       }
       else {
-         console.log('no ws')
+         // console.log('no ws')
       }
    }
 
@@ -126,16 +126,16 @@ export class WebSocketClient {
 
    sendMessage(ws_message) {
       if (!this.ws) {
-         console.log("sendMessage: no websocket connection")
+         // console.log("sendMessage: no websocket connection")
          return;
       }
       else if (this.ws.readyState !== this.ws.OPEN) {
          // Queue the request.
-         console.log("Queuing the request", ws_message);
+         // console.log("Queuing the request", ws_message);
          this.request_queue.push(ws_message);
       }
       else if (this.ws.readyState === this.ws.OPEN) {
-         console.log("Sending message", ws_message);
+         // console.log("Sending message", ws_message);
 
          if (
             NODE_ENV !== 'production'
