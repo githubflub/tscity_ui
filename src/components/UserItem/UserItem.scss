@@ -1,0 +1,65 @@
+@import 'stylesheets/variables.scss';
+$gutter_size: 5px;
+
+@mixin default_wrapping_behavior {
+   display: flex;
+   margin: -#{$gutter_size};
+
+   & > div {
+      margin: #{$gutter_size};
+   }
+
+   .UserItem__left {
+      margin-bottom: $gutter_size;
+   }
+}
+
+.UserItem {
+   @include default_wrapping_behavior;
+   flex-wrap: wrap;
+
+   .UserItem__left {
+      flex: 9999999;
+   }
+
+   .UserItem__right {
+      flex: 1 1 auto;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+   }
+
+   .UserItem__gutter_wrapper {
+      margin: -#{$gutter_size};
+
+      & > button {
+         margin: #{$gutter_size};
+      }
+   }
+}
+
+@mixin always_wrapped_behavior {
+   display: block;
+   margin: 0px;
+
+   & > div {
+      margin: 0px;
+   }
+
+   .UserItem__left {
+      margin-bottom: 10px;
+   }
+}
+
+.UserItem.UserItem__always_wrapped {
+   @include always_wrapped_behavior;
+}
+
+.UserItem.UserItem__use_breakpoints {
+   @include always_wrapped_behavior;
+
+   @media all and (min-width: $TABLET_SIZE) {
+      @include default_wrapping_behavior
+   }
+}
+

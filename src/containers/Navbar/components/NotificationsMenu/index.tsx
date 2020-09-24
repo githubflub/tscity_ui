@@ -64,6 +64,7 @@ export function useNotificationsMenu() {
                      >
                         <FriendRequestItem
                            small
+                           dark_mode
                            friend_request={item.data}
                            sender={sender}
                            loading={friend_requests_loading}

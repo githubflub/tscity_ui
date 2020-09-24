@@ -30,7 +30,13 @@ export default function UserPopper(props) {
          placement="bottom-end"
       >
          <UserPaper elevation={3}>
-            <UserTile user={user} onCloseClick={onCloseClick} style={{ width: '340px' }} />
+            <UserTile
+               user={user}
+               dark_mode
+               always_wrapped
+               onCloseClick={onCloseClick}
+               style={{ width: '340px', padding: "10px" }}
+            />
          </UserPaper>
       </DraggablePopper>
    )

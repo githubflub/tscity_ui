@@ -1,9 +1,7 @@
 import React from 'react'
-import { useQuery } from '@apollo/react-hooks'
 import './ProfilesSearch.scss'
 import { SEARCH_USER } from 'apollo/query/SEARCH_USER'
 import UserTile from 'containers/UserTile/UserTile'
-import { GET_LATEST_USERS } from 'apollo/query/GET_LATEST_USERS'
 import ChatScrollContainer from 'TeenSpotChatClient/gui/shared/ChatScrollContainer/ChatScrollContainer'
 import { useSearch } from 'hooks/useSearch'
 import { SearchKeys } from 'redux_store/modules/search/search'
@@ -37,8 +35,10 @@ export default function ProfileSearch(props) {
                      <div className="profiles_search__results">
                         {search_results.map((user, i) => <UserTile
                            key={i}
+                           dark_mode
                            user={user}
                            use_internal_url
+                           use_breakpoints
                            className="profiles_search__result"
                         />)}
                      </div>
@@ -50,8 +50,10 @@ export default function ProfileSearch(props) {
                      <div className="profiles_search__results">
                         {latest_users.map((user, i) => <UserTile
                            key={i}
+                           dark_mode
                            user={user}
                            use_internal_url
+                           use_breakpoints
                            className="profiles_search__result"
                         />)}
                      </div>

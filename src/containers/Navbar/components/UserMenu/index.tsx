@@ -48,6 +48,7 @@ export function useUserMenu() {
             <UserTag
                user={self}
                use_internal_url
+               dark_mode
                onUsernameClick={handleClose}
                style={{
                   paddingTop: "10px"

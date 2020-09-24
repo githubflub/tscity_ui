@@ -1,16 +1,22 @@
-.user_tag {
+.UserTag {
    display: flex;
    align-items: center;
+
+   .UserTag__name {
+      font-size: 24px;
+      color: black;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+   }
+
+   .UserTag__avatar_circle {
+      margin-right: 10px;
+   }
 }
 
-.user_tag__name {
-   font-size: 24px;
-   color: rgba(white, 0.8);
-   overflow: hidden;
-   white-space: nowrap;
-   text-overflow: ellipsis;
-}
-
-.user_tag__avatar_circle {
-   margin-right: 10px;
+.UserTag.UserTag__dark_mode {
+   .UserTag__name {
+      color: rgba(white, 0.8);
+   }
 }
