@@ -2,6 +2,7 @@ import React from 'react'
 import EditRowsWithMobile from '../EditRowsWithMobile/EditRowsWithMobile'
 import Button from '@material-ui/core/Button'
 import { useFriendManager } from 'hooks/useFriendManager'
+import UserItem from 'components/UserItem/UserItem'
 
 export default function Friends(props) {
    const {
@@ -11,16 +12,18 @@ export default function Friends(props) {
       RemoveFriendConfirmationDialog
    } = useFriendManager();
    const rows = friendships.map(friendship => (
-      <div>
-         <span>{friendship.user.username}</span>
-         <Button
-            variant="contained"
-            color="secondary"
-            onClick={() => openRemoveFriendConfirmationDialog(friendship)}
-         >
-            {`Remove`}
-         </Button>
-      </div>
+      <UserItem
+         user={friendship.user}
+         right_side_items={
+            <Button
+               variant="contained"
+               color="secondary"
+               onClick={() => openRemoveFriendConfirmationDialog(friendship)}
+            >
+               {`Remove`}
+            </Button>
+         }
+      />
    ))
 
    if (!rows.length) rows.push(args_friends.loading? "Loading friends..." : "No friends :(")

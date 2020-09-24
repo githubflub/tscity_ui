@@ -3,8 +3,6 @@ import { BlockUserButton } from 'containers/BlockUserButton/BlockUserButton'
 import Button from '@material-ui/core/Button'
 import UserItem from 'components/UserItem/UserItem'
 
-import './FriendRequestItem.scss'
-
 export default function FriendRequestItem(props) {
    const {
       friend_request,

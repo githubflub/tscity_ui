@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button'
 import EditRowsWithMobile from '../EditRowsWithMobile/EditRowsWithMobile'
 import { useGetSelfQuery } from 'apollo/hooks/useGetSelfQuery'
 import { useFriendRequests } from 'hooks/useFriendRequests'
+import UserItem from 'components/UserItem/UserItem'
 
 export default function FriendRequestsSent(props) {
    const { args, user, friend_requests, friend_requests_sent } = useGetSelfQuery();
@@ -15,17 +16,21 @@ export default function FriendRequestsSent(props) {
 
    const rows = friend_requests_sent.map(friend_request => {
       return (
-         <div>
-            <span>{friend_request.target_username}</span>
-            <Button
-               variant="contained"
-               color="primary"
-               disabled={friend_requests_loading}
-               onClick={() => unsendFriendRequest(friend_request.id)}
-            >
-               {`Unsend`}
-            </Button>
-         </div>
+         <UserItem
+            user={{
+               username: friend_request.target_username,
+            }}
+            right_side_items={
+               <Button
+                  variant="contained"
+                  color="primary"
+                  disabled={friend_requests_loading}
+                  onClick={() => unsendFriendRequest(friend_request.id)}
+               >
+                  {`Unsend`}
+               </Button>
+            }
+         />
       )
    })
 
