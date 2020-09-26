@@ -4,6 +4,7 @@ import {
 } from 'react-router-dom';
 import { Provider } from 'react-redux'
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
+// import { ApolloProvider } from 'apollo-hooks/common/src/context/ApolloProvider'
 import { ApolloProvider } from '@apollo/react-hooks'
 import loadable from '@loadable/component'
 import { createApolloClient } from './apollo'

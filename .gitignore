@@ -5,3 +5,9 @@ database-schema.xlsx
 /dist
 /public
 /notes
+
+# Used for debugging
+src/apollo-cache-inmemory
+src/apollo-common
+src/apollo-hooks
+src/apollo-client

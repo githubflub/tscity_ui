@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import { useQuery } from '@apollo/react-hooks';
+// import { useQuery } from 'apollo-hooks/hooks/src';
 import { GET_SELF_QUERY } from 'apollo/query/GET_SELF_QUERY'
 import { getOppositeUser } from 'utils/getOppositeUser';
 import { arraySortedInsert } from 'utils/arraySortedInsert'
