@@ -25,7 +25,7 @@
     "core-js": "3.1.2",
     "graphql": "14.4.2",
     "graphql-tag": "2.10.1",
-    "lodash": "4.17.11",
+    "lodash": "4.17.19",
     "qhistory": "1.0.3",
     "qs": "6.9.0",
     "react": "16.8.6",
