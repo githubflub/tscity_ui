@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { useLazyQuery, useApolloClient } from '@apollo/react-hooks'
+import { useLazyQuery, useApolloClient } from 'apollo/apollo'
 import Button from '@material-ui/core/Button'
 import BootstrapInput from 'components/BootstrapInput/BootstrapInput'
 import { updateSearch, SearchKeys } from 'redux_store/modules/search/search'

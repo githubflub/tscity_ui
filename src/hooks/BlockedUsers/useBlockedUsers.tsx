@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useMutation, useQuery } from '@apollo/react-hooks'
+import { useMutation, useQuery, DataProxy } from 'apollo/apollo'
 import { BLOCK_USER } from 'apollo/mutation/BLOCK_USER'
 import {
    GET_MY_BLOCKED_USERS,
@@ -10,8 +10,6 @@ import { useDialog } from 'hooks/useDialog'
 import Button from '@material-ui/core/Button'
 import { User } from 'lib/schema/user/typedef'
 import { GET_SELF_QUERY_TYPE, GET_SELF_QUERY } from 'apollo/query/GET_SELF_QUERY'
-import { DataProxy } from 'apollo-cache'
-
 
 export const BlockDialogTypes = {
    unblock: 'unblock',

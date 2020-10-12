@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
-import { useMutation } from '@apollo/react-hooks'
+import { useMutation } from 'apollo/apollo'
 import { CREATE_FRIEND_REQUEST } from 'apollo/mutation/CREATE_FRIEND_REQUEST'
 import { useDialog } from 'hooks/useDialog'
 import { createFriendRequestMutationUpdater } from 'hooks/FriendRequest/createFriendRequestMutationUpdater'

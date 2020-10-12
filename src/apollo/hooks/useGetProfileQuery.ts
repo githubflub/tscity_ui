@@ -1,5 +1,5 @@
 import { GET_PROFILE_QUERY } from 'apollo/query/get_profile'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery } from 'apollo/apollo'
 import { useSelector } from 'react-redux'
 
 export function useGetProfileQuery(username?) {

@@ -1,5 +1,5 @@
 import { getIdentityToken } from 'amplify/getIdentityToken'
-import { setContext } from 'apollo-link-context';
+import { setContext } from 'apollo/apollo';
 
 export const auth_middleware = setContext(async (request, previousContext) => {
    let context_update = {};

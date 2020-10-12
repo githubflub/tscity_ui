@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import Button from '@material-ui/core/Button'
-import { useQuery, useMutation } from '@apollo/react-hooks'
+import { useQuery, useMutation, DataProxy } from 'apollo/apollo'
 import { GET_MY_FRIENDS_QUERY, GET_MY_FRIENDS_QUERY_TYPE } from 'apollo/query/GET_MY_FRIENDS_QUERY'
 import { REMOVE_FRIENDSHIP } from 'apollo/mutation/REMOVE_FRIENDSHIP'
 import { useDialog } from 'hooks/useDialog'
-import { DataProxy } from 'apollo-cache'
 
 const createUpdater = (function_name: string) => (cache: DataProxy, { data: dumb } ) => {
    // console.log("function_name", function_name)

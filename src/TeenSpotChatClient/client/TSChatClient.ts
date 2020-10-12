@@ -1,4 +1,7 @@
-import ApolloClient, { QueryOptions } from 'apollo-client';
+import {
+   ApolloClient,
+   QueryOptions
+} from 'apollo/apollo'
 import { WebSocketClient } from './WebSocketClient'
 import { writeConnectionEstablishedMessage } from './writeConnectionEstablishedMessage';
 import { GET_CHAT_DATA_QUERY } from 'TeenSpotChatClient/graphql/query/getChatDataQuery';

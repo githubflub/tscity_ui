@@ -1,1 +1,1 @@
-{"__schema":{"types":[{"kind":"UNION","name":"MessageUnion","possibleTypes":[{"name":"Message"},{"name":"SystemMessage"}]}]}}
+{"MessageUnion":["Message","SystemMessage"]}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useApolloClient } from '@apollo/react-hooks'
+import { useApolloClient } from 'apollo/apollo'
 import {
    updateConversationLocalReadTime,
    updateReadTimeAxios,

@@ -1,6 +1,6 @@
 import { useGetSelfQuery } from 'apollo/hooks/useGetSelfQuery'
 import { GET_LATEST_USERS } from 'apollo/query/GET_LATEST_USERS'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery } from 'apollo/apollo'
 
 export function useGetLatestUsersQuery() {
    const { blocklist } = useGetSelfQuery();

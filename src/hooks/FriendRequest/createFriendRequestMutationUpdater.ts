@@ -1,5 +1,5 @@
 import { FriendRequest } from 'lib/schema/FriendRequest/typedef'
-import { DataProxy } from 'apollo-cache'
+import { DataProxy } from 'apollo/apollo'
 import { GET_SELF_QUERY, GET_SELF_QUERY_TYPE } from 'apollo/query/GET_SELF_QUERY'
 import { KeyOfMatchingType } from '@tscity/shared/types/KeyOfMatchingType'
 

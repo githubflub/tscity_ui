@@ -1,20 +1,16 @@
-import { ApolloClient } from 'apollo-client';
-// import { ApolloClient } from 'apollo-client/packages/apollo-client/src';
 import {
+   ApolloClient,
+   ApolloLink,
+   HttpLink,
    InMemoryCache,
    defaultDataIdFromObject,
-   IdGetterObj,
-   IntrospectionFragmentMatcher,
-} from 'apollo-cache-inmemory';
-// } from 'apollo-cache-inmemory/packages/apollo-cache-inmemory/src';
-import { HttpLink } from 'apollo-link-http';
-import { onError } from 'apollo-link-error';
-import { ApolloLink } from 'apollo-link';
+   onError,
+} from 'apollo/apollo'
+
 import { auth_middleware } from './auth_middleware'
-import { User } from 'lib/schema/user/typedef'
 import { getGraphQlEndpoint } from 'utils/getEndpoint'
 import { createUserDataId } from 'apollo/utils/createUserDataId'
-import introspectionQueryResultData from './fragment_types.json'
+import possible_types from './fragment_types.json'
 
 // Note on debugging
 // Use the Apollo source code by uncommenting the import lines in this file
@@ -24,10 +20,6 @@ import introspectionQueryResultData from './fragment_types.json'
 
 export function createApolloClient() {
    const graphql_endpoint = getGraphQlEndpoint()
-
-   const fragmentMatcher = new IntrospectionFragmentMatcher({
-      introspectionQueryResultData
-   })
 
    const client = new ApolloClient({
       link: ApolloLink.from([
@@ -48,8 +40,8 @@ export function createApolloClient() {
          })
       ]),
       cache: new InMemoryCache({
-         fragmentMatcher,
-         dataIdFromObject: (object: IdGetterObj & User) => {
+         possibleTypes: possible_types,
+         dataIdFromObject: (object) => {
             switch (object.__typename) {
                case 'User': {
                   return createUserDataId(object);
@@ -57,7 +49,32 @@ export function createApolloClient() {
                case 'MessageSenderType': return null; // sender.id breaks things
                default: return defaultDataIdFromObject(object);
             }
-         }
+         },
+         typePolicies: {
+            User: {
+               fields: {
+                  groups: {
+                     merge(existing = [], incoming: any[]) {
+                        // console.log("existing", existing);
+                        // console.log("incoming", incoming);
+
+                        const existing_arr = existing
+                           .map(item => item.__ref)
+                        const incoming_arr = incoming
+                           .map(item => item.__ref)
+
+                        const new_arr = [ ...new Set(existing_arr.concat(incoming_arr)) ]
+                        const merged = new_arr
+                           .map(key => ({ __ref: key }))
+
+                        // console.log("merged", merged);
+
+                        return merged;
+                     }
+                  }
+               }
+            }
+         },
       })
    });
 

@@ -4,8 +4,10 @@ import thunk from 'redux-thunk'
 // Import actions
 
 import rootReducer from './modules'
-import ApolloClient from 'apollo-client'
-import { NormalizedCacheObject } from 'apollo-cache-inmemory'
+import {
+   ApolloClient,
+   NormalizedCacheObject
+} from 'apollo/apollo'
 
 export function createReduxStore(apollo_client: ApolloClient<NormalizedCacheObject>) {
    const composeEnhancers = (window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose

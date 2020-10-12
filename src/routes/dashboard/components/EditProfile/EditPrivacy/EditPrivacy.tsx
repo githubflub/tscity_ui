@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation } from 'apollo/apollo';
 import { useGetProfileQuery } from 'apollo/hooks/useGetProfileQuery'
 import { UPDATE_PROFILE_MUTATION } from 'apollo/mutation/update_profile';
 import { InputValueType } from 'types/InputValueType'

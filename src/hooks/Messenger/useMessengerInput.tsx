@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useMutation } from '@apollo/react-hooks'
+import { useMutation } from 'apollo/apollo'
 import { validateMessage } from '@tscity/shared/utils/validateMessage'
 import { SEND_DM } from '@tscity/shared/graphql/mutation/SEND_DM';
 import { onReceiveDM } from 'amplify/iot/subtopic_handlers/onReceiveDM'

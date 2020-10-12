@@ -2,7 +2,8 @@ function fetchSchemaFragmentTypes() {
    const fetch = require('node-fetch');
    const fs = require('fs');
 
-   const fragment_write_location = './webpack/schema.graphql'
+   // const fragment_write_location = './webpack/schema.graphql'
+   const fragment_write_location = './src/apollo/fragment_types.json'
 
    const fetch_request = {
       method: 'POST',
@@ -59,20 +60,25 @@ function fetchSchemaFragmentTypes() {
             throw new Error(`Found your endpoint, but couldn't get gql schema`)
          }
 
-         // here we're filtering out any type information unrelated to unions or interfaces
-         const filteredData = data.__schema.types.filter(
-            type => type.possibleTypes !== null,
-         );
-         data.__schema.types = filteredData;
+         // https://www.apollographql.com/docs/react/data/fragments/#defining-possibletypes-manually
+         const possible_types = {};
+         data.__schema.types.forEach(supertype => {
+            if (supertype.possibleTypes) {
+               possible_types[supertype.name] =
+                  supertype.possibleTypes.map(subtype => subtype.name);
+            }
+         })
+
+         console.log("possible_types", possible_types);
 
          // Write schema to a file. u_u
          return new Promise((resolve, reject) => {
-            fs.writeFile(fragment_write_location, JSON.stringify(data), error => {
+            fs.writeFile(fragment_write_location, JSON.stringify(possible_types), error => {
                if (error) {
                   reject(error)
                }
 
-               console.log("Successfully wrote fragmentTypes.json!");
+               console.log("Successfully wrote fragmentTypes.json to", fragment_write_location);
                resolve()
             })
          })

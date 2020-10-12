@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { TSChatClient } from './client/TSChatClient'
 import TSChatClassicGUI from './gui/classic/TSChatClassicGUI'
 import TSChatTwitchGUI from './gui/twitch/TSChatTwitchGUI'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery } from 'apollo/apollo'
 import { GET_CHAT_DATA_QUERY } from './graphql/query/getChatDataQuery'
 import { useScreenSize } from 'hooks/useScreenSize'
 

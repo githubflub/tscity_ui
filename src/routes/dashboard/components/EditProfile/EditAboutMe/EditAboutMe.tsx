@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 
 import Button from '@material-ui/core/Button';
 
-import { useMutation } from '@apollo/react-hooks'
+import { useMutation } from 'apollo/apollo'
 import { useGetProfileQuery } from 'apollo/hooks/useGetProfileQuery'
 import { UPDATE_PROFILE_MUTATION } from 'apollo/mutation/update_profile';
 

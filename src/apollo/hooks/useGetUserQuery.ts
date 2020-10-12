@@ -1,7 +1,10 @@
-import { useQuery, QueryHookOptions } from '@apollo/react-hooks';
+import {
+   useQuery,
+   useApolloClient,
+   QueryHookOptions
+} from 'apollo/apollo';
 import { GET_USER_QUERY } from 'apollo/query/GET_USER_QUERY'
 import { GetUserInputType } from '@tscity/shared/types/GetUserInputType'
-import { useApolloClient } from '@apollo/react-hooks'
 import { UserFragments } from '@tscity/shared/graphql/fragments/UserFragment'
 import { createUserDataId } from 'apollo/utils/createUserDataId'
 

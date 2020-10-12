@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation } from 'apollo/apollo';
 import { useSelector } from 'react-redux'
 import EditRow from 'components/EditRow/EditRow'
 import { useGetSelfQuery } from 'apollo/hooks/useGetSelfQuery'

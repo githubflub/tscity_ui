@@ -1,4 +1,4 @@
-import { useMutation, MutationHookOptions } from '@apollo/react-hooks'
+import { useMutation, MutationHookOptions } from 'apollo/apollo'
 import { REJECT_FRIEND_REQUEST } from 'apollo/mutation/REJECT_FRIEND_REQUEST'
 import { ACCEPT_FRIEND_REQUEST } from 'apollo/mutation/ACCEPT_FRIEND_REQUEST'
 import { UNSEND_FRIEND_REQUEST } from 'apollo/mutation/UNSEND_FRIEND_REQUEST'
